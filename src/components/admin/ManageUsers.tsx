@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
-// import { io } from '../../utils/socket-io'
+import { io } from '../../utils/socket-io'
 import { IUserMySQL, TUserRoleEnum, TUserStatusEnum } from '../../models/User'
 import { useAppDispatch } from '../../redux/hooks'
 import { stateModal } from '../../redux/features/modal/modalSlice'
@@ -68,7 +68,7 @@ const ManageUsers = (props: Props) => {
                             if (roleRef.current!.value == TUserRoleEnum.MANAGER) {
                                 axios.post(`${import.meta.env.VITE_OPS_URL}/add/manager`, data, axiosConfig)
                                     .then(() => {
-                                        // io.emit("create_user")
+                                        io.emit("create_user")
                                         dispatch(stateModal({ show: false, openModal: "CONFIG" }))
                                     }).catch(() => {
                                         console.log("fail");
@@ -76,7 +76,7 @@ const ManageUsers = (props: Props) => {
                             } else if (roleRef.current!.value == TUserRoleEnum.MANAGE_REWARD) {
                                 axios.post(`${import.meta.env.VITE_OPS_URL}/add/manager_reward`, data, axiosConfig)
                                     .then(() => {
-                                        // io.emit("create_user")
+                                        io.emit("create_user")
                                         dispatch(stateModal({ show: false, openModal: "CONFIG" }))
                                     }).catch(() => {
                                         console.log("fail");
@@ -85,7 +85,7 @@ const ManageUsers = (props: Props) => {
                             } else if (roleRef.current!.value == TUserRoleEnum.MEMBER) {
                                 axios.post(`${import.meta.env.VITE_OPS_URL}/add/member`, data, axiosConfig)
                                     .then(() => {
-                                        // io.emit("create_user")
+                                        io.emit("create_user")
                                         dispatch(stateModal({ show: false, openModal: "CONFIG" }))
                                     }).catch(() => {
                                         console.log("fail");
@@ -102,9 +102,9 @@ const ManageUsers = (props: Props) => {
     }
 
     useEffect(() => {
-        // io.on("get_user", () => {
-        //     fetchUserWithStore()
-        // })
+        io.on("get_user", () => {
+            fetchUserWithStore()
+        })
 
         // io.off('get_user')
         fetchUserWithStore()

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { stateModal } from '../../redux/features/modal/modalSlice'
 import { useDispatch } from 'react-redux'
 import { Modal } from '../modal/Modal'
-// import { io } from '../../utils/socket-io'
+import { io } from '../../utils/socket-io'
 import axios, { AxiosRequestConfig } from 'axios'
 import { IStoreMySQL } from '../../models/Store'
 import { IUserMySQL, TUserRoleEnum } from '../../models/User'
@@ -78,7 +78,7 @@ const Stores = (props: Props) => {
                     if (res.data.length > 0) {
                         console.log("username has been used");
                     } else {
-                        // io.emit("create_store")
+                        io.emit("create_store")
                         dispatch(stateModal({ show: false, openModal: "CONFIG" }))
                     }
                 })
@@ -86,9 +86,9 @@ const Stores = (props: Props) => {
     }
 
     useEffect(() => {
-        // io.on("get_store", () => {
-        //     if (isUser) fetchStoresAll()
-        // })
+        io.on("get_store", () => {
+            if (isUser) fetchStoresAll()
+        })
 
         if (isUser) fetchStoresAll()
     }, [])

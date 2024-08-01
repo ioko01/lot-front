@@ -13,7 +13,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContextProvider";
 import { OrderGroup } from "./OrderGroup";
-// import { io } from "../../utils/socket-io";
+import { io } from "../../utils/socket-io";
 import { OrderList } from "./OrderList";
 
 export function Leftbar() {
@@ -32,10 +32,10 @@ export function Leftbar() {
         }
     }
     useEffect(() => {
-        // io.on("get_credit", () => {
-        //     getCredit()
-        //     // io.off('get_credit')
-        // })
+        io.on("get_credit", () => {
+            getCredit()
+            // io.off('get_credit')
+        })
         getCredit()
     }, [])
 

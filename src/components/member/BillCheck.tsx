@@ -12,7 +12,7 @@ import { stateModal } from "../../redux/features/modal/modalSlice";
 import { ModalNotice } from "./ModalNotice";
 import { IBillMySQL } from "../../models/Bill";
 import { AuthContext } from "../../context/AuthContextProvider";
-// import { io } from "../../utils/socket-io";
+import { io } from "../../utils/socket-io";
 import moment from "moment";
 import { TypeDate } from "../../models/Main";
 import { IDigitCloseMySQL } from "../../models/DigitClose";
@@ -490,7 +490,7 @@ export function BillCheck() {
                 // dispatch(deleteBill())
                 dispatch(stateModal({ show: true, openModal: "ADDBILLTRUE", confirm: false }))
                 // io.connect()
-                // io.emit("create_credit")
+                io.emit("create_credit")
                 // io.disconnect()
             } else if (res.status == 202 && res.data.message == "no credit") {
                 isLoading!.style.display = "none"
@@ -612,8 +612,8 @@ export function BillCheck() {
     }, [bills, notePrice])
 
     useEffect(() => {
-        // io.on("get_digit_close", () => fetchDigitClose())
-        // io.on("get_digit_semi", () => fetchDigitSemi())
+        io.on("get_digit_close", () => fetchDigitClose())
+        io.on("get_digit_semi", () => fetchDigitSemi())
         fetchDigitClose()
         fetchDigitSemi()
     }, [lotto])

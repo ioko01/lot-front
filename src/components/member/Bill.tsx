@@ -9,7 +9,7 @@ import { INote, addNotePrice } from "../../redux/features/bill/notePriceSlice";
 import { AuthContext } from "../../context/AuthContextProvider";
 import axios, { AxiosRequestConfig } from "axios";
 import { IDigitCloseMySQL } from "../../models/DigitClose";
-// import { io } from "../../utils/socket-io";
+import { io } from "../../utils/socket-io";
 import { ILottoMySQL, TLottoDateEnum, TLottoStatusEnum } from "../../models/Lotto";
 import html2canvas from 'html2canvas';
 import { countdown, countdownDate } from "../../utils/countdown";
@@ -761,8 +761,8 @@ export function Bill() {
     }, [])
 
     useEffect(() => {
-        // io.on("get_digit_close", () => fetchDigitClose())
-        // io.on("get_digit_semi", () => fetchDigitSemi())
+        io.on("get_digit_close", () => fetchDigitClose())
+        io.on("get_digit_semi", () => fetchDigitSemi())
         fetchDigitClose()
         fetchDigitSemi()
     }, [lotto])
