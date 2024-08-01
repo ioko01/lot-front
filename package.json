@@ -1,0 +1,51 @@
+{
+  "name": "react-typescript-tailwind",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npx vite",
+    "build": "npx tsc && npx vite build",
+    "preview": "npx vite preview"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.18",
+    "@reduxjs/toolkit": "^1.9.1",
+    "axios": "^1.2.2",
+    "date-fns": "^3.3.1",
+    "firebase": "^9.15.0",
+    "get-headers": "^1.0.5",
+    "html2canvas": "^1.4.1",
+    "jwt-decode": "^3.1.2",
+    "moment": "^2.29.4",
+    "mysql2": "^3.9.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "6.4.4",
+    "react-tailwindcss-datepicker": "^1.6.6",
+    "socket.io-client": "^4.6.0",
+    "toolkit": "^1.5.4",
+    "typescript-cookie": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/firebase": "^3.2.1",
+    "@types/jwt-decode": "^3.1.0",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@types/react-router-dom": "5.3.3",
+    "@types/socket.io-client": "^3.0.0",
+    "@vitejs/plugin-react": "^3.0.0",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  },
+  "engines": {
+    "node": "16.15.1",
+    "npm": "8.11.0"
+  }
+}
